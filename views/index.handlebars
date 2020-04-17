@@ -1,38 +1,52 @@
-<h1>Burgers!</h1>
+<div class="row">
+  <div class="col">
+    <img src="/assets/images/burger.png" alt="burger" width="300px">
+  </div>
+</div>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      <li>
-        {{burger_name}}
+<div class="row">
+  <div class="col">
+    <ul class="list-group">
+      <h3>Burgers to be Devoured!</h3>
+      {{#each burgers}}
+        {{#unless devoured}}
+          <li class="list-group-item">
+            {{id}}
+            {{burger_name}}
+            <button class="devourer btn btn-danger" data-id="{{id}}" data-devoured="{{devoured}}">
+              <i class="fas fa-utensils"></i> Devour it!
+            </button>
+          </li>
+        {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
 
-        <button class="devourer" data-id="{{id}}" data-devoured="{{devoured}}">
-          Devourer!
-        </button>
-      </li>
-    {{/unless}}
-  {{/each}}
-</ul>
+    <div class="col">
+    <ul class="list-group">
+      <h3>Burgers Devoured!</h3>
+      {{#each burgers}}
+        {{#if devoured}}
+          <li class="list-group-item">
+            {{id}}
+            {{burger_name}}
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
 
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      <li>
-        {{burger_name}}
-
-        <p>Burgers Devoured!</p>
-      </li>
-    {{/if}}
-  {{/each}}
-</ul>
+{{!-- <div class="row">
+</div> --}}
 
 <h2>Add A New Awesome Original Burger!</h2>
-<form class="create-form">
+<form class="create-burg">
 
   <div class="form-group">
     <label for="burgy">Burger Name:</label>
     <input type="text" id="burgy" name="name">
   </div>
 
-  <button type="submit">Add Burger!</button>
+  <button class="btn btn-success" type="submit">Add Burger!</button>
 </form>

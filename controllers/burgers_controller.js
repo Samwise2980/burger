@@ -13,9 +13,21 @@ router.get("/", (req, res) => {
 });
 
 router.post("/api/burgers", (req, res) => {
+  burger.create({burger_name: req.body.name}, (result) => {
+    res.json({ id: result.insertId });
+  });
 });
 
-router.put("/api/burgers/:newBurger", (req, res) => {
+router.put("/api/burgers/:id/devoured", (req, res) => {
+  const condition = { id: req.params.id };
+  const update = { devoured: req.body.value };
+
+  burger.update(update, condition, (result) => {
+    if (result.affectedRows === 0) {
+      return res.status(404).end();
+    }
+    res.status(200).end();
+  });
 });
 
 module.exports = router;
