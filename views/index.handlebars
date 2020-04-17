@@ -10,10 +10,10 @@
       <h3>Burgers to be Devoured!</h3>
       {{#each burgers}}
         {{#unless devoured}}
-          <li class="list-group-item">
+          <li class="list-group-item text-left">
             {{id}}
             {{burger_name}}
-            <button class="devourer btn btn-danger" data-id="{{id}}" data-devoured="{{devoured}}">
+            <button class="devourer btn btn-danger float-right" data-id="{{id}}" data-devoured="{{devoured}}">
               <i class="fas fa-utensils"></i> Devour it!
             </button>
           </li>
@@ -27,9 +27,10 @@
       <h3>Burgers Devoured!</h3>
       {{#each burgers}}
         {{#if devoured}}
-          <li class="list-group-item">
+          <li class="list-group-item text-left">
             {{id}}
             {{burger_name}}
+            <p class="float-right">Devoured</p>
           </li>
         {{/if}}
       {{/each}}
