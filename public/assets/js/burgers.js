@@ -1,7 +1,6 @@
 $(() => {
   $(".devourer").on("click", function () {
     const id = $(this).data("id");
-    // const devoured = $(this).data("devoured");
 
     const eatState = { value: true };
 
